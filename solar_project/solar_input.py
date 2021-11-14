@@ -1,6 +1,6 @@
 # coding: utf-8
 # license: GPLv3
-
+import time
 from solar_objects import Star, Planet
 from solar_vis import DrawableObject
 
@@ -111,10 +111,12 @@ def write_space_objects_data_to_file(output_filename, space_objects):
 
     **space_objects** — список объектов планет и звёзд
     """
-    with open(output_filename, 'w') as out_file:
+    with open(output_filename, 'a') as out_file:
         for obj in space_objects:
-            print(out_file, "%s %d %s %f" % ('1', 2, '3', 4.5))
-            # FIXME!
+            if obj.type == 'Planet':
+                print(obj.type, obj.R, obj.color, obj.m, obj.x, obj.y,
+                      "{:f}".format((obj.x ** 2 + obj.y ** 2) ** 0.5),
+                      time, file=out_file)
 
 
 if __name__ == "__main__":
