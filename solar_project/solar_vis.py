@@ -59,7 +59,7 @@ def scale_y(y):
     **y** — y-координата модели.
     """
 
-    return int(-y*scale_factor) + window_height//2
+    return int(y*scale_factor) + window_height//2
 
 
 if __name__ == "__main__":
@@ -75,7 +75,7 @@ class Drawer:
         self.screen.fill((0, 0, 0))
         for figure in figures:
             figure.drawOn(self.screen)
-        
+
         ui.blit()
         ui.update()
         pg.display.update()
